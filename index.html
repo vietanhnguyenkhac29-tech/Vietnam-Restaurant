@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Việt Hưng - Hương Vị Ẩm Thực Việt</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Background Overlay -->
+    <div class="bg-overlay"></div>
+
+    <!-- Notification Container -->
+    <div id="notification-container"></div>
+
+    <!-- Header -->
+    <header id="main-header">
+      <div class="container header-container">
+        <div class="logo">
+          <img
+            src="G_lSvSbbEAAkGeI.png"
+            alt="Việt Hưng Logo"
+            class="logo-img"
+            onerror="
+              this.style.display = 'none';
+              this.nextElementSibling.style.display = 'block';
+            "
+          />
+          <span class="logo-text" style="display: none">Việt Hưng</span>
+        </div>
+
+        <nav class="main-nav">
+          <ul>
+            <li><a href="#home" class="active">Trang Chủ</a></li>
+            <li><a href="#menu">Thực Đơn</a></li>
+            <li><a href="#about">Về Chúng Tôi</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <!-- Search -->
+          <button class="icon-btn search-trigger" title="Tìm kiếm">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+
+          <!-- Cart -->
+          <button class="icon-btn" id="cart-btn" title="Giỏ hàng">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-count">0</span>
+          </button>
+
+          <!-- Notification -->
+          <div class="notif-wrapper">
+            <button class="icon-btn" id="notif-icon" title="Thông báo">
+              <i class="fa-solid fa-bell"></i>
+              <span id="notif-count">0</span>
+            </button>
+            <div class="notif-dropdown" id="notif-dropdown">
+              <h3>Thông Báo</h3>
+              <ul id="notif-list">
+                <li><span class="empty-notif">Chưa có thông báo nào</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Auth -->
+          <div class="auth-buttons">
+            <button class="btn-login" id="login-btn">Đăng Nhập</button>
+            <button class="btn-register" id="register-btn">Đăng Ký</button>
+          </div>
+
+          <button class="mobile-menu-btn">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Search Section (Slide-down bar) -->
+    <div id="search-modal" class="search-modal">
+      <div class="container search-container">
+        <input
+          type="text"
+          placeholder="Bạn muốn ăn gì hôm nay?..."
+          id="search-input"
+        />
+        <div class="search-actions">
+          <button id="search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+          <button id="close-search"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Hero Section -->
+      <section id="home" class="hero-section">
+        <div class="container hero-content">
+          <h1 class="hero-title">
+            Việt Hưng <br/>
+            <span class="highlight">Hương Vị Việt</span>
+          </h1>
+          <p class="hero-subtitle">
+            Hội tụ tinh hoa ẩm thực ba miền. Trải nghiệm hương vị truyền thống
+            trong không gian hiện đại.
+          </p>
+          <div class="hero-buttons">
+            <a href="#menu" class="btn btn-primary">Đặt món ngay</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Content -->
+      <main>
+        <!-- Hero Section -->
+
+      <!-- Menu Section -->
+      <section id="menu" class="menu-section">
+        <div class="container">
+          <h2 class="section-title">Thực Đơn Của Chúng Tôi</h2>
+          <p class="section-desc">Lựa chọn hương vị bạn yêu thích</p>
+
+          <!-- Category Filter -->
+          <div class="category-filter">
+            <button class="cat-btn active" data-category="all">Tất Cả</button>
+            <button class="cat-btn" data-category="pho">Phở & Bún</button>
+            <button class="cat-btn" data-category="rice">Cơm Việt</button>
+            <button class="cat-btn" data-category="snacks">Ăn Vặt</button>
+            <button class="cat-btn" data-category="drinks">Đồ Uống</button>
+            <button class="cat-btn" data-category="bread"> Bánh mì</button>
+            <button class="cat-btn" data-category="Other">Khác</button>
+           </div>
+
+          <!-- Food Grid -->
+          <div id="food-grid" class="food-grid">
+            <!-- Items rendered by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section (Placeholder) -->
+      <section id="about" class="about-section">
+        <div class="container">
+          <h2 class="section-title">Về Việt Hưng</h2>
+          <div class="about-content">
+            <p>
+              Chúng tôi tự hào mang đến những món ăn đậm đà bản sắc dân tộc,
+              được chế biến từ những nguyên liệu tươi ngon nhất.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Modals -->
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="modal">
+      <div class="modal-content cart-content">
+        <span class="close-btn">&times;</span>
+        <h2><i class="fa-solid fa-basket-shopping"></i> Giỏ Hàng Của Bạn</h2>
+        <div id="cart-items" class="cart-items-container">
+          <!-- Cart items rendered here -->
+        </div>
+        <div class="cart-footer">
+          <div class="total-row">
+            <span>Tổng cộng:</span>
+            <span id="cart-total">0 ₫</span>
+          </div>
+          <button id="checkout-btn" class="btn btn-primary full-width">
+            Thanh Toán
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="modal">
+      <div class="modal-content payment-content">
+        <span id="close-payment" class="close-btn">&times;</span>
+        <h2><i class="fa-regular fa-credit-card"></i> Thanh Toán</h2>
+        <div class="payment-info">
+          <p>Tổng tiền cần thanh toán:</p>
+          <h1 id="payment-amount" class="highlight-price">0 ₫</h1>
+        </div>
+        <div class="payment-methods">
+          <div class="method selected">
+            <i class="fa-solid fa-money-bill-wave"></i> Tiền mặt
+          </div>
+          <div class="method"><i class="fa-solid fa-qrcode"></i> QR Code</div>
+        </div>
+        <form class="payment-form">
+          <input type="text" placeholder="Họ và tên" required />
+          <input type="text" placeholder="Số điện thoại" required />
+          <input type="text" placeholder="Địa chỉ giao hàng" required />
+        </form>
+        <button id="confirm-payment" class="btn btn-primary full-width">
+          Xác Nhận Đặt Hàng
+        </button>
+      </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="modal">
+      <div class="modal-content auth-content">
+        <span id="close-auth" class="close-btn">&times;</span>
+        <div class="auth-tabs">
+          <button class="auth-tab active" data-target="login-form">
+            Đăng Nhập
+          </button>
+          <button class="auth-tab" data-target="register-form">Đăng Ký</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="login-form" class="auth-form active">
+          <div class="input-group">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" placeholder="Tên đăng nhập" required />
+          </div>
+          <div class="input-group">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" placeholder="Mật khẩu" required />
+          </div>
+          <button type="submit" class="btn btn-primary full-width">
+            Đăng Nhập
+          </button>
+          <div class="social-login">
+            <p>Hoặc đăng nhập bằng</p>
+            <div class="social-btns">
+              <button type="button" class="social-btn facebook">
+                <i class="fa-brands fa-facebook-f"></i> Facebook
+              </button>
+              <button type="button" class="social-btn google">
+                <i class="fa-brands fa-google"></i> Google
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <!-- Register Form -->
+        <form id="register-form" class="auth-form">
+          <div class="input-group">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" placeholder="Tên đăng nhập" required />
+          </div>
+          <div class="input-group">
+            <i class="fa-solid fa-envelope"></i>
+            <input type="email" placeholder="Email" required />
+          </div>
+          <div class="input-group">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" placeholder="Mật khẩu" required />
+          </div>
+          <!-- Captcha -->
+          <div class="captcha-group">
+            <div class="captcha-box">
+              <span id="captcha-display">ABC123</span>
+              <button type="button" id="refresh-captcha">
+                <i class="fa-solid fa-arrows-rotate"></i>
+              </button>
+            </div>
+            <input
+              type="text"
+              id="captcha-input"
+              placeholder="Nhập mã xác nhận"
+              required
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary full-width">
+            Đăng Ký
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container footer-content">
+        <div class="footer-col">
+          <h3>Việt Hưng</h3>
+          <p>Lan tỏa hương vị Việt đến mọi nhà.</p>
+          <div class="footer-socials">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Thông Tin</h3>
+          <ul>
+            <li><a href="#">Giới thiệu</a></li>
+            <li><a href="#">Chính sách bảo mật</a></li>
+            <li><a href="#">Điều khoản sử dụng</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Liên Hệ</h3>
+          <p>
+            <i class="fa-solid fa-location-dot"></i> 123 Đường Ẩm Thực, Quận 1,
+            TP.Hà Nội
+          </p>
+          <p><i class="fa-solid fa-envelope"></i> contact@viethung.com</p>
+          <p><i class="fa-solid fa-phone"></i> 1975-004-0030</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Copyright © 2025 Việt Hưng. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>
