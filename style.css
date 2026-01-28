@@ -1052,10 +1052,55 @@ footer {
   font-size: 0.9rem;
 }
 
-/* Responsive adjustments */
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+
+/* 4K Screens (2560px) */
+@media (min-width: 2560px) {
+  :root {
+    --font-size-base: 20px;
+  }
+  .container {
+    max-width: 2200px;
+  }
+  .hero-title {
+    font-size: 6rem;
+  }
+  .hero-subtitle {
+    font-size: 1.8rem;
+    max-width: 900px;
+  }
+}
+
+/* Large Desktops (1440px) */
+@media (max-width: 1440px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+
+/* Laptops & Tablets Landscape (1024px) */
+@media (max-width: 1024px) {
+  .container {
+    max-width: 960px;
+  }
+  .hero-title {
+    font-size: 3.5rem;
+  }
+  .food-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+/* Tablets Portrait (768px) */
 @media (max-width: 768px) {
+  #main-header {
+    background: rgba(18, 18, 18, 0.98);
+  }
+
   .header-container {
-    height: 60px;
+    height: 70px;
   }
 
   .mobile-menu-btn {
@@ -1064,15 +1109,17 @@ footer {
 
   .main-nav {
     position: fixed;
-    top: 60px;
+    top: 0;
     right: -100%;
-    width: 100%;
-    height: calc(100vh - 60px);
-    background: var(--dark-bg);
-    padding: 40px;
+    width: 280px;
+    height: 100vh;
+    background: var(--dark-bg-2);
+    padding: 80px 30px;
     transition: var(--transition);
-    text-align: center;
-    overflow-y: auto;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
   }
 
   .main-nav.active {
@@ -1081,19 +1128,115 @@ footer {
 
   .main-nav ul {
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .main-nav a {
+    font-size: 1.1rem;
+    width: 100%;
+    display: block;
+    padding: 10px 0;
+  }
+
+  .header-actions {
+    gap: 10px;
   }
 
   .auth-buttons {
-    display: none; /* Can move to mobile menu if needed */
+    display: none; /* Can be added to the mobile menu if desired */
+  }
+
+  .hero-section {
+    padding-top: 70px;
   }
 
   .hero-title {
-    font-size: 2.8rem;
+    font-size: 3rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+  }
+
+  .food-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Footer adjustments */
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile Large (425px) */
+@media (max-width: 425px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .food-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .category-filter {
+    gap: 8px;
+  }
+
+  .cat-btn {
+    padding: 8px 15px;
+    font-size: 0.85rem;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-socials {
+    justify-content: center;
   }
 
   .modal-content {
-    width: 95%;
     padding: 20px;
+  }
+
+  .highlight-price {
+    font-size: 1.8rem;
+  }
+}
+
+/* Mobile Medium (375px) */
+@media (max-width: 375px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .auth-tabs .auth-tab {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Mobile Small (320px) */
+@media (max-width: 320px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .logo-img {
+    height: 45px;
+  }
+
+  .header-container {
+    padding: 0 10px;
+  }
+
+  .icon-btn {
+    font-size: 1rem;
   }
 }
